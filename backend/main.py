@@ -62,10 +62,20 @@ app.add_middleware(
     **trusted_host_config
 )
 
+# Root endpoint for health check
+@app.get("/")
+async def root():
+    return {"message": "Network Security Analyzer API", "status": "running", "version": "1.0.0"}
+
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "timestamp": "2024-01-01T00:00:00Z"}
+
 # Include routers
-app.include_router(threat_intelligence.router)
-app.include_router(network_scan.router)
-app.include_router(websocket.router)
+app.include_router(threat_intelligence.router, prefix="/api/v1/threat-intelligence", tags=["threat-intelligence"])
+app.include_router(network_scan.router, prefix="/api/v1/network-scan", tags=["network-scan"])
+app.include_router(websocket.router, prefix="/api/v1/websocket", tags=["websocket"])
 
 # Global exception handler
 @app.exception_handler(Exception)
