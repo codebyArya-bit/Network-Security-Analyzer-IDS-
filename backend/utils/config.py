@@ -109,8 +109,14 @@ class Settings(BaseSettings):
                 self.frontend_url
             ]
         else:
-            # In production, only allow the configured frontend URL
-            return [self.frontend_url]
+            # In production, allow the configured frontend URL and Render domains
+            return [
+                self.frontend_url,
+                "https://network-security-analyzer-frontend.onrender.com",
+                "https://network-security-analyzer-ids.onrender.com",
+                "https://network-security-ids.onrender.com",
+                "https://securenet-analyzer.onrender.com"
+            ]
     
     @property
     def trusted_hosts(self) -> List[str]:
@@ -120,6 +126,7 @@ class Settings(BaseSettings):
         if self.is_production:
             # Add production hosts
             hosts.extend([
+                "network-security-analyzer-frontend.onrender.com",
                 "network-security-analyzer-ids.onrender.com",
                 "network-security-ids.onrender.com",
                 "securenet-analyzer.onrender.com"

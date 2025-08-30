@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
     allowedHosts: [
+      "network-security-analyzer-frontend.onrender.com",
       "network-security-analyzer-ids.onrender.com",
       "network-security-ids.onrender.com",
       "securenet-analyzer.onrender.com",
