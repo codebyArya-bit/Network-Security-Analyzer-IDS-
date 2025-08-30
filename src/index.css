@@ -1,0 +1,353 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cybersecurity Dashboard Design System
+All colors in HSL format for consistent theming
+*/
+
+@layer base {
+  :root {
+    /* Dark cybersecurity theme */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 40% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Cyber blue primary */
+    --primary: 196 100% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    /* Darker secondary */
+    --secondary: 222 30% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 10%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 196 85% 45%;
+    --accent-foreground: 222 47% 6%;
+
+    /* Alert red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 15%;
+    --input: 222 30% 12%;
+    --ring: 196 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom cybersecurity colors */
+    --cyber-blue: 196 100% 50%;
+    --cyber-blue-dark: 196 100% 35%;
+    --electric-blue: 206 100% 60%;
+    --neon-green: 120 100% 50%;
+    --warning-orange: 25 95% 55%;
+    --danger-red: 0 84% 60%;
+    --dark-surface: 222 40% 8%;
+    --darker-surface: 222 47% 6%;
+    
+    /* Status colors */
+    --status-critical: 0 84% 60%;
+    --status-high: 15 90% 55%;
+    --status-medium: 45 100% 55%;
+    --status-low: 120 50% 50%;
+    --status-info: 196 100% 50%;
+
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-blue)), hsl(var(--electric-blue)));
+    --gradient-alert: linear-gradient(135deg, hsl(var(--danger-red)), hsl(var(--warning-orange)));
+    --gradient-surface: linear-gradient(145deg, hsl(var(--dark-surface)), hsl(var(--darker-surface)));
+
+    /* Animations */
+    --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow-cyber: 0 0 20px hsl(var(--cyber-blue) / 0.5);
+    --glow-danger: 0 0 20px hsl(var(--danger-red) / 0.5);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    /* Light theme for cybersecurity dashboard */
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 196 100% 45%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 222 47% 11%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 25% 35%;
+    
+    --accent: 196 85% 40%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 214 31% 91%;
+    --input: 214 31% 91%;
+    --ring: 196 100% 45%;
+    
+    /* Light mode cyber colors */
+    --cyber-blue: 196 100% 45%;
+    --cyber-blue-dark: 196 100% 30%;
+    --electric-blue: 206 100% 55%;
+    --neon-green: 120 60% 40%;
+    --dark-surface: 210 40% 96%;
+    --darker-surface: 0 0% 98%;
+    
+    /* Light mode status colors */
+    --status-critical: 0 84% 55%;
+    --status-high: 15 90% 50%;
+    --status-medium: 45 100% 45%;
+    --status-low: 120 50% 40%;
+    --status-info: 196 100% 45%;
+    
+    /* Light mode gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-blue)), hsl(var(--electric-blue)));
+    --gradient-surface: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    
+    /* Light mode glows */
+    --glow-cyber: 0 0 15px hsl(var(--cyber-blue) / 0.3);
+    --glow-danger: 0 0 15px hsl(var(--danger-red) / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  #root {
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--darker-surface));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--cyber-blue) / 0.5);
+  }
+}
+
+@layer components {
+  /* Cyber glow effects */
+  .cyber-glow {
+    box-shadow: var(--glow-cyber);
+    transition: var(--transition-cyber);
+  }
+  
+  .cyber-glow:hover {
+    box-shadow: 0 0 25px hsl(var(--cyber-blue) / 0.6);
+  }
+
+  .danger-glow {
+    box-shadow: var(--glow-danger);
+    transition: var(--transition-cyber);
+  }
+
+  /* Data visualization styles */
+  .chart-container {
+    background: var(--gradient-surface);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    transition: var(--transition-cyber);
+  }
+  
+  .chart-container:hover {
+    border-color: hsl(var(--cyber-blue) / 0.3);
+  }
+
+  /* Status indicators */
+  .status-critical {
+    color: hsl(var(--status-critical));
+  }
+  
+  .status-high {
+    color: hsl(var(--status-high));
+  }
+  
+  .status-medium {
+    color: hsl(var(--status-medium));
+  }
+  
+  .status-low {
+    color: hsl(var(--status-low));
+  }
+  
+  .status-info {
+    color: hsl(var(--status-info));
+  }
+
+  /* Animation utilities */
+  .slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  /* Pulse animation for live elements */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  /* Scanning line animation */
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
+
+  /* Ensure full background coverage */
+  html, body {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+  }
+
+  #root {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px hsl(var(--cyber-blue) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--cyber-blue) / 0.8);
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: -2px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
