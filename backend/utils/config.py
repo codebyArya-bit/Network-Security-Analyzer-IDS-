@@ -124,12 +124,14 @@ class Settings(BaseSettings):
         hosts = ["localhost", "127.0.0.1"]
         
         if self.is_production:
-            # Add production hosts
+            # Add production hosts including backend domain and wildcard for Render
             hosts.extend([
+                "network-security-analyzer-backend.onrender.com",
                 "network-security-analyzer-frontend.onrender.com",
                 "network-security-analyzer-ids.onrender.com",
                 "network-security-ids.onrender.com",
-                "securenet-analyzer.onrender.com"
+                "securenet-analyzer.onrender.com",
+                "*.onrender.com"  # Allow all Render subdomains
             ])
         
         return hosts
