@@ -1,58 +1,41 @@
-# FastAPI and ASGI server
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
+# Core FastAPI and web framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
 
-# Data validation and serialization
-pydantic==2.5.0
-pydantic-settings==2.1.0
+# HTTP clients and networking
+requests==2.32.3
+httpx==0.28.1
+aiohttp==3.11.10
 
-# HTTP client for external API calls
-httpx==0.25.2
-requests==2.31.0
+# Basic network tools (lightweight)
+psutil==6.1.0
 
-# Database (SQLAlchemy + PostgreSQL/SQLite)
-sqlalchemy==2.0.23
-psycopg2-binary==2.9.9
-alembic==1.13.1
+# Threat intelligence APIs (lightweight)
+ipwhois==1.2.0
 
-# Authentication and security
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
-
-# Environment variables
-python-dotenv==1.0.0
-
-# Network and security tools
-scapy==2.5.0
-python-nmap==0.7.1
-netaddr==0.10.1
-
-# Threat intelligence and geolocation
-geoip2==4.7.0
-requests-cache==1.1.1
+# Environment and configuration
+python-dotenv==1.0.1
 
 # WebSocket support
-websockets==12.0
+websockets==14.1
 
 # Async support
-aiofiles==23.2.1
-aiohttp==3.9.1
+aiofiles==24.1.0
 
-# Logging and monitoring
+# Basic authentication
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+
+# Logging
 loguru==0.7.2
 
-# Data processing
-pandas==2.1.4
-numpy==1.26.2
-
 # Email functionality
-email-validator==2.1.0
+email-validator==2.2.0
 
-# Testing (development)
-pytest==7.4.3
-pytest-asyncio==0.21.1
-httpx==0.25.2
+# JSON handling
+orjson==3.10.12
 
-# Production server
-gunicorn==21.2.0
+# CORS middleware
+fastapi-cors==0.0.6
