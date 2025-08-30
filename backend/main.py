@@ -62,16 +62,6 @@ app.add_middleware(
     **trusted_host_config
 )
 
-# Root endpoint for health check
-@app.get("/")
-async def root():
-    return {"message": "Network Security Analyzer API", "status": "running", "version": "1.0.0"}
-
-# Health check endpoint
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy", "timestamp": "2024-01-01T00:00:00Z"}
-
 # Include routers
 app.include_router(threat_intelligence.router, prefix="/api/v1/threat-intelligence", tags=["threat-intelligence"])
 app.include_router(network_scan.router, prefix="/api/v1/network-scan", tags=["network-scan"])
@@ -80,7 +70,7 @@ app.include_router(websocket.router, prefix="/api/v1/websocket", tags=["websocke
 # Global exception handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
-    logger.error(f"Global exception: {exc}")
+    logger.error(f"Global exception handler caught: {exc}")
     return JSONResponse(
         status_code=500,
         content={
@@ -89,8 +79,6 @@ async def global_exception_handler(request, exc):
             "timestamp": datetime.now().isoformat()
         }
     )
-
-
 
 # Core API Routes
 @app.get("/")
@@ -103,9 +91,9 @@ async def root():
         "environment": ENVIRONMENT,
         "endpoints": {
             "health": "/health",
-            "network_scanning": "/api/network/*",
-            "threat_intelligence": "/api/threat/*",
-            "websocket": "/ws/*",
+            "network_scanning": "/api/v1/network-scan/*",
+            "threat_intelligence": "/api/v1/threat-intelligence/*",
+            "websocket": "/api/v1/websocket/*",
             "documentation": "/docs",
             "api_schema": "/openapi.json"
         },
