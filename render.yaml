@@ -1,0 +1,37 @@
+services:
+  # Backend API Service
+  - type: web
+    name: network-security-analyzer-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    rootDir: .
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: FRONTEND_URL
+        value: https://network-security-ids.onrender.com
+      - key: JWT_SECRET_KEY
+        value: ns_analyzer_2024_secure_jwt_key_production_render_deployment_v1
+      - key: LOG_LEVEL
+        value: WARNING
+      - key: DEBUG
+        value: false
+      - key: RELOAD
+        value: false
+
+  # Frontend Static Site
+  - type: static
+    name: network-security-analyzer-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    plan: free
+    rootDir: .
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://network-security-analyzer-backend.onrender.com/api/v1
+      - key: VITE_WEBSOCKET_URL
+        value: wss://network-security-analyzer-backend.onrender.com/ws
