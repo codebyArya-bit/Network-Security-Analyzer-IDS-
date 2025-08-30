@@ -1,0 +1,58 @@
+# FastAPI and ASGI server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Data validation and serialization
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# HTTP client for external API calls
+httpx==0.25.2
+requests==2.31.0
+
+# Database (SQLAlchemy + PostgreSQL/SQLite)
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.1
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Network and security tools
+scapy==2.5.0
+python-nmap==0.7.1
+netaddr==0.10.1
+
+# Threat intelligence and geolocation
+geoip2==4.7.0
+requests-cache==1.1.1
+
+# WebSocket support
+websockets==12.0
+
+# Async support
+aiofiles==23.2.1
+aiohttp==3.9.1
+
+# Logging and monitoring
+loguru==0.7.2
+
+# Data processing
+pandas==2.1.4
+numpy==1.26.2
+
+# Email functionality
+email-validator==2.1.0
+
+# Testing (development)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Production server
+gunicorn==21.2.0
