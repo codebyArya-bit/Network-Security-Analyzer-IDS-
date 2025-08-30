@@ -36,6 +36,3 @@ email-validator==2.2.0
 
 # JSON handling
 orjson==3.10.12
-
-# CORS middleware
-fastapi-cors==0.0.6
