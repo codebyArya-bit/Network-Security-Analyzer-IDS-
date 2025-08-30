@@ -23,11 +23,12 @@ services:
       - key: RELOAD
         value: false
 
-  # Frontend Static Site
-  - type: static
+  # Frontend Web Service
+  - type: web
     name: network-security-analyzer-frontend
+    runtime: node
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    startCommand: npm run preview -- --host 0.0.0.0 --port $PORT
     plan: free
     rootDir: .
     envVars:
