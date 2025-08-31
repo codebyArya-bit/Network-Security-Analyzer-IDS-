@@ -99,6 +99,14 @@ bun dev
 
 The application will be available at `http://localhost:8082`
 
+## 🌐 Live Demo
+
+**🚀 Production Application:**
+- **Frontend:** [https://network-security-analyzer-m35mleueh-aryas-projects-6676c3c7.vercel.app](https://network-security-analyzer-m35mleueh-aryas-projects-6676c3c7.vercel.app)
+- **Backend API:** [https://network-security-analyzer-backend.onrender.com](https://network-security-analyzer-backend.onrender.com)
+
+*Experience the full-featured network security monitoring platform in action!*
+
 ## 🔧 Environment Setup
 
 Create a `.env` file in the root directory:
@@ -159,7 +167,13 @@ The application is designed to integrate with:
 
 ## 🚀 Deployment
 
-### Frontend (Vercel)
+### Current Architecture
+- **Frontend:** Deployed on Vercel (Static Site)
+- **Backend:** Deployed on Render (FastAPI)
+- **Database:** PostgreSQL on Render
+- **Cache:** Redis on Render
+
+### Frontend Deployment (Vercel)
 ```bash
 # Build for production
 npm run build
@@ -169,10 +183,14 @@ vercel --prod
 ```
 
 ### Backend Integration
-This frontend is designed to work with a FastAPI backend. See deployment guides for:
-- **Render** - Backend hosting
-- **PostgreSQL** - Database
-- **Redis** - Caching
+This frontend connects to a FastAPI backend hosted on Render:
+- **API Endpoint:** `https://network-security-analyzer-backend.onrender.com`
+- **WebSocket:** `wss://network-security-analyzer-backend.onrender.com/ws`
+- **Health Check:** `https://network-security-analyzer-backend.onrender.com/health`
+
+For detailed deployment guides, see:
+- [`VERCEL_DEPLOYMENT_GUIDE.md`](./VERCEL_DEPLOYMENT_GUIDE.md) - Frontend deployment
+- [`deploy-vercel.md`](./deploy-vercel.md) - Step-by-step Vercel setup
 
 ## 🧪 Available Scripts
 
