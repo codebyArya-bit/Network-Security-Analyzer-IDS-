@@ -109,13 +109,18 @@ class Settings(BaseSettings):
                 self.frontend_url
             ]
         else:
-            # In production, allow the configured frontend URL and Render domains
+            # In production, allow the configured frontend URL, Render domains, and Vercel domains
             return [
                 self.frontend_url,
                 "https://network-security-analyzer-frontend.onrender.com",
                 "https://network-security-analyzer-ids.onrender.com",
                 "https://network-security-ids.onrender.com",
-                "https://securenet-analyzer.onrender.com"
+                "https://securenet-analyzer.onrender.com",
+                # Vercel domains for faster frontend deployment
+                "https://network-security-analyzer.vercel.app",
+                "https://network-security-analyzer-ids.vercel.app",
+                "https://cyber-path-main.vercel.app",
+                "*.vercel.app"  # Allow all Vercel subdomains
             ]
     
     @property
@@ -124,14 +129,19 @@ class Settings(BaseSettings):
         hosts = ["localhost", "127.0.0.1"]
         
         if self.is_production:
-            # Add production hosts including backend domain and wildcard for Render
+            # Add production hosts including backend domain and wildcards for Render and Vercel
             hosts.extend([
                 "network-security-analyzer-backend.onrender.com",
                 "network-security-analyzer-frontend.onrender.com",
                 "network-security-analyzer-ids.onrender.com",
                 "network-security-ids.onrender.com",
                 "securenet-analyzer.onrender.com",
-                "*.onrender.com"  # Allow all Render subdomains
+                "*.onrender.com",  # Allow all Render subdomains
+                # Vercel domains for faster frontend deployment
+                "network-security-analyzer.vercel.app",
+                "network-security-analyzer-ids.vercel.app",
+                "cyber-path-main.vercel.app",
+                "*.vercel.app"  # Allow all Vercel subdomains
             ])
         
         return hosts
